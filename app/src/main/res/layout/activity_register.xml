@@ -9,9 +9,9 @@
 
     <fragment
         android:id="@+id/register_fragment"
-        android:name="br.com.instagram.register.view.RegisterEmailFragment"
+        android:name="br.com.instagram.register.view.RegisterNamePasswordFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout="@layout/fragment_register_email" />
+        tools:layout="@layout/fragment_register_name_password" />
 
 </LinearLayout>
