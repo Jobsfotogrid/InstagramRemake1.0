@@ -11,12 +11,15 @@ import br.com.instagram.R
 import br.com.instagram.common.util.TxtWatcher
 import br.com.instagram.databinding.ActivityLoginBinding
 import br.com.instagram.login.Login
+import br.com.instagram.login.presentation.LoginPresenter
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
 class LoginActivity : AppCompatActivity(), Login.View {
 
     private lateinit var binding: ActivityLoginBinding
+
+    override lateinit var presenter: Login.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,22 +28,34 @@ class LoginActivity : AppCompatActivity(), Login.View {
 
         setContentView(binding.root)
 
+        presenter = LoginPresenter(this)
+
         with(binding) {
             loginEditEmail.addTextChangedListener(watcher)
+            loginEditEmail.addTextChangedListener(TxtWatcher {
+                displayEmailFailure(null)
+            })
+
             loginEditPassword.addTextChangedListener(watcher)
+            loginEditPassword.addTextChangedListener(TxtWatcher {
+                displayPasswordFailure(null)
+            })
 
             loginBtnEnter.setOnClickListener {
-                // CHAMAR O PRESENTER !!!!
-
-                // Handler(Looper.getMainLooper()).postDelayed({
-                // loginBtnEnter.showProgress(false)
-                // }, 2000)
+                presenter.login(loginEditEmail.text.toString(), loginEditPassword.text.toString())
             }
         }
     }
 
+    override fun onDestroy() {
+        presenter.onDestroy()
+        super.onDestroy()
+    }
+
     private val watcher = TxtWatcher {
-        binding.loginBtnEnter.isEnabled = it.isNotEmpty()
+        binding.loginBtnEnter.isEnabled =
+            binding.loginEditEmail.text.toString().isNotEmpty() &&
+                    binding.loginEditPassword.text.toString().isNotEmpty()
     }
 
     override fun showProgress(enabled: Boolean) {
