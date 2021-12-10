@@ -12,6 +12,7 @@ import br.com.instagram.login.data.FakeDataSource
 import br.com.instagram.login.data.LoginRepository
 import br.com.instagram.login.presentation.LoginPresenter
 import br.com.instagram.main.view.MainActivity
+import br.com.instagram.register.view.RegisterActivity
 
 class LoginActivity : AppCompatActivity(), Login.View {
 
@@ -42,12 +43,20 @@ class LoginActivity : AppCompatActivity(), Login.View {
             loginBtnEnter.setOnClickListener {
                 presenter.login(loginEditEmail.text.toString(), loginEditPassword.text.toString())
             }
+
+            loginTxtRegister.setOnClickListener {
+                goToRegisterScreen()
+            }
         }
     }
 
     override fun onDestroy() {
         presenter.onDestroy()
         super.onDestroy()
+    }
+
+    private fun goToRegisterScreen() {
+        startActivity(Intent(this, RegisterActivity::class.java))
     }
 
     private val watcher = TxtWatcher {
