@@ -4,5 +4,4 @@ interface BasePresenter {
 
     fun onDestroy()
 
-
 }

@@ -2,8 +2,8 @@ package br.com.instagram.common.base
 
 import br.com.instagram.login.data.FakeDataSource
 import br.com.instagram.login.data.LoginRepository
-import br.com.instagram.register.data.FakeRegisterEmailDataSource
-import br.com.instagram.register.data.RegisterEmailRepository
+import br.com.instagram.register.data.FakeRegisterDataSource
+import br.com.instagram.register.data.RegisterRepository
 
 object DependencyInjector {
 
@@ -11,8 +11,8 @@ object DependencyInjector {
         return LoginRepository(FakeDataSource())
     }
 
-    fun registerEmailRepository(): RegisterEmailRepository {
-        return RegisterEmailRepository(FakeRegisterEmailDataSource())
+    fun registerEmailRepository(): RegisterRepository {
+        return RegisterRepository(FakeRegisterDataSource())
     }
 
 }
