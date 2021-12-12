@@ -1,5 +1,6 @@
 package br.com.instagram.register.view
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -13,6 +14,7 @@ import br.com.instagram.register.presentation.RegisterEmailPresenter
 class RegisterEmailFragment : Fragment(R.layout.fragment_register_email), RegisterEmail.View {
 
     private var binding: FragmentRegisterEmailBinding? = null
+    private var fragmentAttachListener: FragmentAttachListener? = null
 
     override lateinit var presenter: RegisterEmail.Presenter
 
@@ -42,17 +44,25 @@ class RegisterEmailFragment : Fragment(R.layout.fragment_register_email), Regist
                 })
             }
         }
+
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is FragmentAttachListener) {
+            fragmentAttachListener = context
+        }
     }
 
     override fun onDestroy() {
         binding = null
+        fragmentAttachListener = null
         presenter.onDestroy()
         super.onDestroy()
     }
 
     private val watcher = TxtWatcher {
-        binding?.registerBtnNext?.isEnabled =
-            binding?.registerEditEmail?.text.toString().isNotEmpty()
+        binding?.registerBtnNext?.isEnabled = binding?.registerEditEmail?.text.toString().isNotEmpty()
     }
 
     override fun showProgress(enabled: Boolean) {
@@ -68,6 +78,7 @@ class RegisterEmailFragment : Fragment(R.layout.fragment_register_email), Regist
     }
 
     override fun goToNameAndPasswordScreen(email: String) {
-        // DEPOIS A GENTE VAI MANDAR ELE PARA O PROXIMO FRAGMENT
+        fragmentAttachListener?.goToNameAndPasswordScreen(email)
     }
+
 }
