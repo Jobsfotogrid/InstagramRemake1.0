@@ -1,4 +1,4 @@
-package br.com.instagram.login.view
+package br.com.instagram.common.view
 
 import android.content.Context
 import android.util.AttributeSet

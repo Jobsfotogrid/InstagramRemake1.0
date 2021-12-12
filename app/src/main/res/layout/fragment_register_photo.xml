@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/white"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,31 +18,32 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="70dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="70dp">
 
-            <ImageView
-                android:layout_marginBottom="48dp"
-                android:src="@drawable/photo_icon"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/register_img_profile"
                 android:layout_width="150dp"
-                android:layout_gravity="center_horizontal"
                 android:layout_height="150dp"
-                android:contentDescription="@null" />
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="48dp"
+                android:contentDescription="@null"
+                android:src="@drawable/photo_icon" />
 
             <TextView
+                style="@style/Theme.Instagram.TextViewBase.Form"
+                android:layout_gravity="center_horizontal"
                 android:text="@string/photo_register_title"
-                android:textSize="24sp"
                 android:textColor="@color/black"
-                android:layout_gravity="center_horizontal"
-                style="@style/Theme.Instagram.TextViewBase.Form" />
+                android:textSize="24sp" />
 
             <TextView
-                android:text="@string/photo_register_subtitle"
-                android:textColor="@color/black"
+                style="@style/Theme.Instagram.TextViewBase.Form"
                 android:layout_gravity="center_horizontal"
-                style="@style/Theme.Instagram.TextViewBase.Form" />
+                android:text="@string/photo_register_subtitle"
+                android:textColor="@color/black" />
 
-            <br.com.instagram.login.view.LoadingButton
+            <br.com.instagram.common.view.LoadingButton
                 android:id="@+id/register_btn_next"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,8 +51,8 @@
 
             <Button
                 android:id="@+id/register_btn_jump"
-                android:text="@string/jump"
-                style="@style/Theme.Instagram.Link" />
+                style="@style/Theme.Instagram.Link"
+                android:text="@string/jump" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
