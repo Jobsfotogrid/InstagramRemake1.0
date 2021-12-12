@@ -6,7 +6,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
@@ -60,8 +59,7 @@ class RegisterPhotoFragment : Fragment(R.layout.fragment_register_photo) {
         customDialog.addButton(R.string.photo, R.string.gallery) {
             when (it.id) {
                 R.string.photo -> {
-                    Log.i("Teste", "foto")
-                    // agora a gente consgue abrir a camera
+                  fragmentAttachListener?.goToCameraScreen()
                 }
                 R.string.gallery -> {
                     fragmentAttachListener?.goToGalleryScreen()
