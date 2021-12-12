@@ -19,9 +19,8 @@ class MainActivity : AppCompatActivity() {
                 WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
                 WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
             )
+            window.statusBarColor = ContextCompat.getColor(this, R.color.gray)
         }
-
-        window.statusBarColor = ContextCompat.getColor(this, R.color.gray)
 
         val toolbar = findViewById<Toolbar>(R.id.main_toolbar)
         setSupportActionBar(toolbar)
