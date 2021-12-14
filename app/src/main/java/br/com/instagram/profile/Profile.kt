@@ -8,6 +8,7 @@ import br.com.instagram.common.model.UserAuth
 interface Profile {
 
     interface Presenter : BasePresenter {
+        var state: UserAuth?
         fun fetchUserProfile()
         fun fetchUserPosts()
     }

@@ -146,6 +146,8 @@
     </androidx.core.widget.NestedScrollView>
 
     <ProgressBar
+        android:visibility="gone"
+        tools:visibility="visible"
         android:id="@+id/profile_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
