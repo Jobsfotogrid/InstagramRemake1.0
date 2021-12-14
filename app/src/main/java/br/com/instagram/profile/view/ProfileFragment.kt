@@ -12,6 +12,7 @@ import br.com.instagram.common.model.UserAuth
 import br.com.instagram.databinding.FragmentProfileBinding
 import br.com.instagram.profile.Profile
 import br.com.instagram.profile.presenter.ProfilePresenter
+import br.com.instagram.profile.presenter.ProfileState
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding, Profile.Presenter>(
     R.layout.fragment_profile,
@@ -27,25 +28,40 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, Profile.Presenter>(
         presenter = ProfilePresenter(this, repository)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        presenter.subscribe(
+            if (savedInstanceState != null) {
+                ProfileState(
+                    (savedInstanceState.getParcelableArray("posts") as Array<Post>).toList(),
+                    savedInstanceState.getParcelable("user")
+                )
+            } else {
+                null
+            }
+        )
+    }
+
     override fun setupViews() {
         binding?.profileRv?.layoutManager = GridLayoutManager(requireContext(), 3)
         binding?.profileRv?.adapter = adapter
 
-        presenter.fetchUserProfile()
+//    presenter.fetchUserProfile()
     }
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        if (savedInstanceState != null) {
-            val state = savedInstanceState.getParcelable<UserAuth?>("myState")
-            state?.let {
-                displayUserProfile(it)
-            }
-        }
-        super.onViewStateRestored(savedInstanceState)
-    }
+//  override fun onViewStateRestored(savedInstanceState: Bundle?) {
+//    if (savedInstanceState != null) {
+//      val state = savedInstanceState.getParcelable<UserAuth?>("myState")
+//      state?.let {
+//        displayUserProfile(it)
+//      }
+//    }
+//    super.onViewStateRestored(savedInstanceState)
+//  }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        outState.putParcelable("myState", presenter.state)
+        outState.putParcelable("user", presenter.getState().fetchUserProfile())
+        outState.putParcelableArray("posts", presenter.getState().fetchUserPosts()?.toTypedArray())
         super.onSaveInstanceState(outState)
     }
 
@@ -59,7 +75,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, Profile.Presenter>(
         binding?.profileTxtFollowersCount?.text = userAuth.followersCount.toString()
         binding?.profileTxtUsername?.text = userAuth.name
         binding?.profileTxtBio?.text = "TODO"
-        presenter.fetchUserPosts()
+//    presenter.fetchUserPosts()
     }
 
     override fun displayRequestFailure(message: String) {
