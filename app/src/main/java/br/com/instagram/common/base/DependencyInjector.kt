@@ -2,6 +2,9 @@ package br.com.instagram.common.base
 
 import br.com.instagram.login.data.FakeDataSource
 import br.com.instagram.login.data.LoginRepository
+import br.com.instagram.profile.data.PostListMemoryCache
+import br.com.instagram.profile.data.ProfileDataSourceFactory
+import br.com.instagram.profile.data.ProfileMemoryCache
 import br.com.instagram.profile.data.ProfileRepository
 import br.com.instagram.register.data.FakeRegisterDataSource
 import br.com.instagram.register.data.RegisterRepository
@@ -23,7 +26,7 @@ object DependencyInjector {
     }
 
     fun profileRepository() : ProfileRepository {
-        return ProfileRepository(ProfileFakeRemoteDataSource())
+        return ProfileRepository(ProfileDataSourceFactory(ProfileMemoryCache, PostListMemoryCache))
     }
 
 }

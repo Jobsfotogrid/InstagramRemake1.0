@@ -1,11 +1,11 @@
-package br.com.instagram.common.base
+package br.com.instagram.profile.data
 
 import android.os.Handler
 import android.os.Looper
+import br.com.instagram.common.base.RequestCallback
 import br.com.instagram.common.model.Database
 import br.com.instagram.common.model.Post
 import br.com.instagram.common.model.UserAuth
-import br.com.instagram.profile.data.ProfileDataSource
 
 class ProfileFakeRemoteDataSource : ProfileDataSource {
 
