@@ -1,30 +1,50 @@
 package br.com.instagram.add.view
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.setFragmentResultListener
 import br.com.instagram.R
-import br.com.instagram.add.Add
-import br.com.instagram.common.base.BaseFragment
 import br.com.instagram.databinding.FragmentAddBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
-class AddFragment : BaseFragment<FragmentAddBinding, Add.Presenter>(
-    R.layout.fragment_add,
-    FragmentAddBinding::bind
-), Add.View {
+class AddFragment : Fragment(R.layout.fragment_add) {
 
-    override lateinit var presenter: Add.Presenter
+    private var binding: FragmentAddBinding? = null
 
-    override fun setupPresenter() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setFragmentResultListener("takePhotoKey") { requestKey, bundle ->
+            val uri = bundle.getParcelable<Uri>("uri")
+            uri?.let {
+                val intent = Intent(requireContext(), AddActivity::class.java)
+                intent.putExtra("photoUri", uri)
+                startActivity(intent)
+            }
+        }
     }
 
-    override fun setupViews() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding = FragmentAddBinding.bind(view)
+
+        if (savedInstanceState == null)
+            setupViews()
+    }
+
+    private fun setupViews() {
         val tabLayout = binding?.addTab
         val viewPager = binding?.addViewpager
         val adapter = AddViewPagerAdapter(requireActivity())
@@ -61,24 +81,16 @@ class AddFragment : BaseFragment<FragmentAddBinding, Add.Presenter>(
         setFragmentResult("cameraKey", bundleOf("startCamera" to true))
     }
 
-    private val getPermission =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
-            if (allPermissionsGranted()) {
-                startCamera()
-            } else {
-                Toast.makeText(
-                    requireContext(),
-                    R.string.permission_camera_denied,
-                    Toast.LENGTH_LONG
-                ).show()
-            }
+    private val getPermission = registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+        if (allPermissionsGranted()) {
+            startCamera()
+        } else {
+            Toast.makeText(requireContext(), R.string.permission_camera_denied, Toast.LENGTH_LONG).show()
         }
+    }
 
     private fun allPermissionsGranted() =
-        ContextCompat.checkSelfPermission(
-            requireContext(),
-            REQUIRED_PERMISSION
-        ) == PackageManager.PERMISSION_GRANTED
+        ContextCompat.checkSelfPermission(requireContext(), REQUIRED_PERMISSION) == PackageManager.PERMISSION_GRANTED
 
     companion object {
         private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA

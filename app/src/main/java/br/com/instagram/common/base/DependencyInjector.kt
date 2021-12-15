@@ -1,5 +1,8 @@
 package br.com.instagram.common.base
 
+import br.com.instagram.add.data.AddFakeRemoteDataSource
+import br.com.instagram.add.data.AddLocalDataSource
+import br.com.instagram.add.data.AddRepository
 import br.com.instagram.home.data.FeedMemoryCache
 import br.com.instagram.home.data.HomeDataSourceFactory
 import br.com.instagram.home.data.HomeRepository
@@ -16,24 +19,28 @@ import br.com.instagram.splash.data.SplashRepository
 
 object DependencyInjector {
 
-    fun splashRepository() : SplashRepository {
+    fun splashRepository(): SplashRepository {
         return SplashRepository(FakeLocalDataSource())
     }
 
-    fun loginRepository() : LoginRepository {
+    fun loginRepository(): LoginRepository {
         return LoginRepository(FakeDataSource())
     }
 
-    fun registerEmailRepository() : RegisterRepository {
+    fun registerEmailRepository(): RegisterRepository {
         return RegisterRepository(FakeRegisterDataSource())
     }
 
-    fun profileRepository() : ProfileRepository {
+    fun profileRepository(): ProfileRepository {
         return ProfileRepository(ProfileDataSourceFactory(ProfileMemoryCache, PostListMemoryCache))
     }
 
-    fun homeRepository() : HomeRepository {
+    fun homeRepository(): HomeRepository {
         return HomeRepository(HomeDataSourceFactory(FeedMemoryCache))
+    }
+
+    fun addRepository(): AddRepository {
+        return AddRepository(AddFakeRemoteDataSource(), AddLocalDataSource())
     }
 
 }
