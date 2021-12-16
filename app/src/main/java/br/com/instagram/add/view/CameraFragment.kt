@@ -3,6 +3,7 @@ package br.com.instagram.add.view
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.util.Size
 import android.view.*
 import android.widget.Button
 import androidx.camera.core.CameraSelector
@@ -25,11 +26,7 @@ class CameraFragment : Fragment() {
 
     private var imageCapture: ImageCapture? = null
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_camera, container, false)
     }
 
@@ -60,9 +57,7 @@ class CameraFragment : Fragment() {
         val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
 
         imageCapture.takePicture(
-            outputOptions,
-            ContextCompat.getMainExecutor(requireContext()),
-            object : ImageCapture.OnImageSavedCallback {
+            outputOptions, ContextCompat.getMainExecutor(requireContext()), object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile)
                     setFragmentResult("takePhotoKey", bundleOf("uri" to savedUri))
@@ -89,6 +84,7 @@ class CameraFragment : Fragment() {
                 }
 
             imageCapture = ImageCapture.Builder()
+                .setTargetResolution(Size(480, 480))
                 .build()
 
             val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA

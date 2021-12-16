@@ -48,7 +48,7 @@ class AddActivity : AppCompatActivity(), Add.View {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        when(item.itemId) {
             android.R.id.home -> {
                 finish()
                 return true
@@ -66,6 +66,7 @@ class AddActivity : AppCompatActivity(), Add.View {
     }
 
     override fun displayRequestSuccess() {
+        setResult(RESULT_OK)
         finish()
     }
 

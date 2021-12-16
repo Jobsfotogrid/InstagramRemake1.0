@@ -12,6 +12,9 @@ class ProfilePresenter(
     private val repository: ProfileRepository
 ) : Profile.Presenter {
 
+    override fun clear() {
+        repository.clearCache()
+    }
 
     override fun fetchUserProfile() {
         view?.showProgress(true)

@@ -18,14 +18,14 @@ import br.com.instagram.search.view.SearchFragment
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener, AddFragment.AddListener {
 
     private lateinit var binding: ActivityMainBinding
 
-    private lateinit var homeFragment: Fragment
+    private lateinit var homeFragment: HomeFragment
     private lateinit var searchFragment: Fragment
     private lateinit var addFragment: Fragment
-    private lateinit var profileFragment: Fragment
+    private lateinit var profileFragment: ProfileFragment
     private var currentFragment: Fragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,8 +63,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         val coordinatorParams = binding.mainAppbar.layoutParams as CoordinatorLayout.LayoutParams
 
         if (enabled) {
-            params.scrollFlags =
-                AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL or AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS
+            params.scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL or AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS
             coordinatorParams.behavior = AppBarLayout.Behavior()
         } else {
             params.scrollFlags = 0
@@ -76,7 +75,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         var scrollToolbarEnabled = false
 
-        when (item.itemId) {
+        when(item.itemId) {
             R.id.menu_bottom_home -> {
                 if (currentFragment == homeFragment) return false
                 currentFragment = homeFragment
@@ -104,4 +103,13 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
         return true
     }
+
+    override fun onPostCreated() {
+        homeFragment.presenter.clear()
+
+        // TODO: profile presenter clear
+
+        binding.mainBottomNav.selectedItemId = R.id.menu_bottom_home
+    }
+
 }
