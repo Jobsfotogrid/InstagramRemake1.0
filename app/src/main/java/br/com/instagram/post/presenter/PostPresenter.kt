@@ -1,5 +1,6 @@
 package br.com.instagram.post.presenter
 
+import android.net.Uri
 import br.com.instagram.post.Post
 import br.com.instagram.post.data.PostRepository
 import kotlinx.coroutines.*
@@ -9,6 +10,8 @@ class PostPresenter(
     private var view: Post.View?,
     private val repository: PostRepository
 ) : Post.Presenter, CoroutineScope {
+
+    private var uri: Uri? = null
 
     private val job = Job()
     override val coroutineContext: CoroutineContext = job + Dispatchers.IO
@@ -32,6 +35,14 @@ class PostPresenter(
             }
 
         }
+    }
+
+    override fun selectUri(uri: Uri) {
+        this.uri = uri
+    }
+
+    override fun getSelectedUri(): Uri? {
+        return uri
     }
 
     override fun onDestroy() {

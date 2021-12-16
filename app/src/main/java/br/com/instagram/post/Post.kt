@@ -7,6 +7,8 @@ import br.com.instagram.common.base.BaseView
 interface Post {
 
     interface Presenter : BasePresenter {
+        fun selectUri(uri: Uri)
+        fun getSelectedUri(): Uri?
         fun fetchPictures()
     }
 
