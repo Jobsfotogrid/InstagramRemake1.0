@@ -10,8 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 
 fun Activity.hideKeyboard() {
-    val imm: InputMethodManager =
-        getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+    val imm: InputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
 
     var view: View? = currentFocus
     if (view == null) {
@@ -21,7 +20,8 @@ fun Activity.hideKeyboard() {
     imm.hideSoftInputFromWindow(view.windowToken, 0)
 }
 
-fun Activity.animationEnd(callback: () -> Unit): AnimatorListenerAdapter {
+
+fun Activity.animationEnd(callback: () -> Unit) : AnimatorListenerAdapter {
     return object : AnimatorListenerAdapter() {
         override fun onAnimationEnd(animation: Animator?) {
             callback.invoke()
@@ -29,15 +29,16 @@ fun Activity.animationEnd(callback: () -> Unit): AnimatorListenerAdapter {
     }
 }
 
+
 fun AppCompatActivity.replaceFragment(@IdRes id: Int, fragment: Fragment) {
     if (supportFragmentManager.findFragmentById(id) == null) {
         supportFragmentManager.beginTransaction().apply {
-            add(id, fragment)
+            add(id, fragment, fragment.javaClass.simpleName)
             commit()
         }
     } else {
         supportFragmentManager.beginTransaction().apply {
-            replace(id, fragment)
+            replace(id, fragment, fragment.javaClass.simpleName)
             addToBackStack(null)
             commit()
         }
