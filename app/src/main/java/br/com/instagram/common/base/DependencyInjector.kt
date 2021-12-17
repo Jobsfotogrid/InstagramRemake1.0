@@ -24,35 +24,36 @@ import br.com.instagram.splash.data.SplashRepository
 
 object DependencyInjector {
 
-    fun splashRepository(): SplashRepository {
+
+    fun splashRepository() : SplashRepository {
         return SplashRepository(FakeLocalDataSource())
     }
 
-    fun loginRepository(): LoginRepository {
+    fun loginRepository() : LoginRepository {
         return LoginRepository(FakeDataSource())
     }
 
-    fun registerEmailRepository(): RegisterRepository {
+    fun registerEmailRepository() : RegisterRepository {
         return RegisterRepository(FakeRegisterDataSource())
     }
 
-    fun searchRepository(): SearchRepository {
+    fun searchRepository() : SearchRepository {
         return SearchRepository(SearchFakeRemoteDataSource())
     }
 
-    fun profileRepository(): ProfileRepository {
+    fun profileRepository() : ProfileRepository {
         return ProfileRepository(ProfileDataSourceFactory(ProfileMemoryCache, PostListMemoryCache))
     }
 
-    fun homeRepository(): HomeRepository {
+    fun homeRepository() : HomeRepository {
         return HomeRepository(HomeDataSourceFactory(FeedMemoryCache))
     }
 
-    fun addRepository(): AddRepository {
+    fun addRepository() : AddRepository {
         return AddRepository(AddFakeRemoteDataSource(), AddLocalDataSource())
     }
 
-    fun postRepository(context: Context): PostRepository {
+    fun postRepository(context: Context) : PostRepository {
         return PostRepository(PostLocalDataSource(context))
     }
 
