@@ -22,7 +22,16 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, Search.Presenter>(
 
     override lateinit var presenter: Search.Presenter
 
-    private val adapter = SearchAdapter()
+    private val adapter by lazy { SearchAdapter(onItemClicked) }
+
+    private var searchListener: SearchListener? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is SearchListener) {
+            searchListener = context
+        }
+    }
 
     override fun setupViews() {
         binding?.searchRv?.layoutManager = LinearLayoutManager(requireContext())
@@ -32,6 +41,11 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, Search.Presenter>(
     override fun setupPresenter() {
         val repository = DependencyInjector.searchRepository()
         presenter = SearchPresenter(this, repository)
+    }
+
+    private val onItemClicked: (String) -> Unit = { uuid ->
+        // depois do click
+        searchListener?.goToProfile(uuid)
     }
 
     override fun getMenu() = R.menu.menu_search
@@ -74,6 +88,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, Search.Presenter>(
     override fun displayEmptyUsers() {
         binding?.searchTxtEmpty?.visibility = View.VISIBLE
         binding?.searchRv?.visibility = View.GONE
+    }
+
+    interface SearchListener {
+        fun goToProfile(uuid: String)
     }
 
 }
