@@ -30,35 +30,10 @@ object Database {
         followers[userB.uuid] = hashSetOf()
         posts[userB.uuid] = hashSetOf()
         feeds[userB.uuid] = hashSetOf()
-//    /sdcard/Android/media/co.tiagoaguiar.course.instagram/Instagram/2021-09-06-17-48-17-538.jpg
 
-        feeds[userA.uuid]?.addAll(
-            arrayListOf(
-                Post(UUID.randomUUID().toString(), Uri.fromFile(
-                    File("/storage/self/primary/Android/media/br.com.instagram/Instagram/2021-12-15-19-36-48-059.jpg")),
-                    "desc",
-                    System.currentTimeMillis(), userA),
-
-                Post(UUID.randomUUID().toString(), Uri.fromFile(
-                    File("/storage/self/primary/Android/media/br.com.instagram/Instagram/2021-12-15-19-38-53-413.jpg")),
-                    "desc",
-                    System.currentTimeMillis(), userA),
-
-                Post(UUID.randomUUID().toString(), Uri.fromFile(
-                    File("/storage/self/primary/Android/media/br.com.instagram/Instagram/2021-12-15-19-39-35-195.jpg")),
-                    "desc",
-                    System.currentTimeMillis(), userA),
-
-                Post(UUID.randomUUID().toString(), Uri.fromFile(
-                    File("/storage/self/primary/Android/media/br.com.instagram/Instagram/2021-12-16-13-41-20-272.jpg")
-                ),
-                    "desc",
-                    System.currentTimeMillis(), userA),
-            )
-        )
-
-        feeds[userA.uuid]?.toList()?.let {
-            feeds[userB.uuid]?.addAll(it)
+        for(i in 0..30) {
+            val user = UserAuth(UUID.randomUUID().toString(), "User$i", "user$i@gmail.com", "123123123", null)
+            usersAuth.add(user)
         }
 
         sessionAuth = usersAuth.first()
