@@ -53,5 +53,9 @@ Bibliotecas de terceiros:
 ```
 
  Links úteis:
- * [Firebase](https://firebase.google.com/)
  * [Add Firebase to your Android project](https://firebase.google.com/docs/android/setup?authuser=0)
+ * [Android Image Cropper](https://github.com/ArthurHub/Android-Image-Cropper)
+ * [CameraX](https://developer.android.com/jetpack/androidx/releases/camera?hl=pt-br)
+ * [CircleImageView](https://github.com/hdodenhof/CircleImageView)
+ * [Firebase](https://firebase.google.com/)
+ * [Fragment KTX](https://developer.android.com/kotlin/ktx?gclid=Cj0KCQiAqvaNBhDLARIsAH1Pq522ar-HUgnXuNtnt3ZwTPcD0Rx-9OOMLDkJawhcvMJs5q29mUeDVncaAq9ZEALw_wcB&gclsrc=aw.ds)
