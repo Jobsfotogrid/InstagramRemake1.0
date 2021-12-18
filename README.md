@@ -5,12 +5,7 @@ Linguagem de programação utilizada ```Kotlin```
 * Arquitetura do projeto ```MVP```
 * Android ```5.0 | Jelly Bean```
 * API ```17```
-
-Descrição do Módulo 14, 15, 16, 17 do curso Android Express ministrado pelo instrutor @Tiago Aguiar:
-* Módulo 14 | InstagramApp: UI Avançada
-* Módulo 15 | InstagramApp: Lógica Avançada
-* Módulo 16 | InstagramApp: Animações Avançadas
-* Módulo 17 | InstagramApp: Ambiente Produção
+* Descrição do Módulo 14, 15, 16, 17 do curso Android Express ministrado pelo instrutor @Tiago Aguiar:
 
 Permissões do Android Manisfest:
  ```
