@@ -15,7 +15,7 @@ import br.com.instagram.profile.data.PostListMemoryCache
 import br.com.instagram.profile.data.ProfileDataSourceFactory
 import br.com.instagram.profile.data.ProfileMemoryCache
 import br.com.instagram.profile.data.ProfileRepository
-import br.com.instagram.register.data.FakeRegisterDataSource
+import br.com.instagram.register.data.FireRegisterDataSource
 import br.com.instagram.register.data.RegisterRepository
 import br.com.instagram.search.data.SearchFakeRemoteDataSource
 import br.com.instagram.search.data.SearchRepository
@@ -24,36 +24,35 @@ import br.com.instagram.splash.data.SplashRepository
 
 object DependencyInjector {
 
-
-    fun splashRepository() : SplashRepository {
+    fun splashRepository(): SplashRepository {
         return SplashRepository(FakeLocalDataSource())
     }
 
-    fun loginRepository() : LoginRepository {
+    fun loginRepository(): LoginRepository {
         return LoginRepository(FakeDataSource())
     }
 
-    fun registerEmailRepository() : RegisterRepository {
-        return RegisterRepository(FakeRegisterDataSource())
+    fun registerEmailRepository(): RegisterRepository {
+        return RegisterRepository(FireRegisterDataSource())
     }
 
-    fun searchRepository() : SearchRepository {
+    fun searchRepository(): SearchRepository {
         return SearchRepository(SearchFakeRemoteDataSource())
     }
 
-    fun profileRepository() : ProfileRepository {
+    fun profileRepository(): ProfileRepository {
         return ProfileRepository(ProfileDataSourceFactory(ProfileMemoryCache, PostListMemoryCache))
     }
 
-    fun homeRepository() : HomeRepository {
+    fun homeRepository(): HomeRepository {
         return HomeRepository(HomeDataSourceFactory(FeedMemoryCache))
     }
 
-    fun addRepository() : AddRepository {
+    fun addRepository(): AddRepository {
         return AddRepository(AddFakeRemoteDataSource(), AddLocalDataSource())
     }
 
-    fun postRepository(context: Context) : PostRepository {
+    fun postRepository(context: Context): PostRepository {
         return PostRepository(PostLocalDataSource(context))
     }
 

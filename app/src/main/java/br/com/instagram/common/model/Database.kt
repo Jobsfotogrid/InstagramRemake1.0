@@ -14,17 +14,11 @@ object Database {
     var sessionAuth: UserAuth? = null
 
     init {
-        val userA = UserAuth(
-            UUID.randomUUID().toString(), "UserA", "userA@gmail.com", "12345678", Uri.fromFile(
-                File("/storage/emulated/0/Android/media/br.com.instagram/Instagram/2021-12-15-18-28-10-401.jpg")
-            )
-        )
+        val userA = UserAuth(UUID.randomUUID().toString(), "UserA", "userA@gmail.com", "12345678", Uri.fromFile(
+            File("/storage/emulated/0/Android/media/co.tiagoaguiar.course.instagram/Instagram/2021-09-06-17-48-17-538.jpg")))
 
-        val userB = UserAuth(
-            UUID.randomUUID().toString(), "UserB", "userB@gmail.com", "87654321", Uri.fromFile(
-                File("/storage/emulated/0/Android/media/br.com.instagram/Instagram/2021-12-15-19-35-15-232.jpg")
-            )
-        )
+        val userB = UserAuth(UUID.randomUUID().toString(), "UserB", "userB@gmail.com", "87654321", Uri.fromFile(
+            File("/storage/emulated/0/Android/media/co.tiagoaguiar.course.instagram/Instagram/2021-09-06-17-48-17-538.jpg")))
 
         usersAuth.add(userA)
         usersAuth.add(userB)
@@ -37,20 +31,14 @@ object Database {
         posts[userB.uuid] = hashSetOf()
         feeds[userB.uuid] = hashSetOf()
 
-        for (i in 0..30) {
-            val user = UserAuth(
-                UUID.randomUUID().toString(),
-                "User$i",
-                "user$i@gmail.com",
-                "123123123",
-                null
-            )
+        for(i in 0..30) {
+            val user = UserAuth(UUID.randomUUID().toString(), "User$i", "user$i@gmail.com", "123123123", null)
             usersAuth.add(user)
         }
 
-        sessionAuth = usersAuth.first()
+        // sessionAuth = usersAuth.first()
 
-        followers[sessionAuth!!.uuid]?.add(usersAuth[2].uuid)
+        // followers[sessionAuth!!.uuid]?.add(usersAuth[2].uuid)
     }
 
 }
