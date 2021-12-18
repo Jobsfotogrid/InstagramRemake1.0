@@ -3,8 +3,8 @@
 Linguagem de programação utilizada ```Kotlin```
 * Ferramenta de desenvolvimento utilizada ```Android Studio```
 * Arquitetura do projeto ```MVP```
-* Android ```5.0 | Jelly Bean```
-* API ```17```
+* Android ```5.0 | Lollipop```
+* API ```21```
 
 Permissões do Android Manisfest:
  ```
