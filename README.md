@@ -23,39 +23,33 @@ Permissões do Android Manisfest:
     </queries>
  ```
  
- Permissões do Android Image Cropper no Android Manifest:
- 
-```
-<activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-  android:theme="@style/Base.Theme.AppCompat"/>
-```
- 
  Linhas de implementação adicionadas no Android Manifest:
  ```
  <provider
-  android:name="androidx.core.content.FileProvider"
-  android:authorities="br.com.instagramremake.fileprovider"
-  android:exported="false"
-  android:grantUriPermissions="true">
-  <meta-data
-      android:name="android.support.FILE_PROVIDER_PATHS"
-      android:resource="@xml/file_paths" />
-</provider>
+      android:name="androidx.core.content.FileProvider"
+      android:authorities="br.com.instagram.fileprovider"
+      android:exported="false"
+      android:grantUriPermissions="true">
+      <meta-data
+          android:name="android.support.FILE_PROVIDER_PATHS"
+          android:resource="@xml/file_paths" />
+          </provider> 
  ```
  
 Bibliotecas de terceiros:
 
 ```
-implementation 'com.google.android.material:material:1.3.0'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
+    implementation 'androidx.fragment:fragment-ktx:1.4.0'
+    implementation 'androidx.camera:camera-camera2:1.0.2'
+    implementation 'androidx.camera:camera-lifecycle:1.0.2'
+    implementation 'androidx.camera:camera-view:1.0.0-alpha32'
 
-implementation 'com.heinrichreimersoftware:material-intro:2.0.0'
-
-implementation 'de.hdodenhof:circleimageview:3.1.0'
-
-implementation 'com.jakewharton:butterknife:10.0.0'
-annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
-
-implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
+    implementation platform('com.google.firebase:firebase-bom:29.0.3')
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+    implementation 'com.google.firebase:firebase-storage-ktx'
 ```
 
  Links úteis:
