@@ -1,4 +1,6 @@
-# Instagram Remake 1.0
+# InstagramRemake1.0
+ 
+ UI, Lógica, Animação Gráfica e banco de dados em produção
  
 * Linguagem de programação utilizada ```Kotlin```
 * Ferramenta de desenvolvimento utilizada ```Android Studio```
