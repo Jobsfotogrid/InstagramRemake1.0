@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "32513415163",
+    "project_id": "instagramremake1-0",
+    "storage_bucket": "instagramremake1-0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:32513415163:android:37d7248d2a147d13665d5e",
+        "android_client_info": {
+          "package_name": "br.com.instagram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "32513415163-opa659asrlolk5bttr85h3nrv5hd705d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAS4ZX4AeIH_QgcWhNGc_n8j_-yDpT15J8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "32513415163-opa659asrlolk5bttr85h3nrv5hd705d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
