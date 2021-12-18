@@ -6,6 +6,8 @@
 * Base de dados ```Firebase```
 * Android ```5.0 | Lollipop```
 * API ```21```
+* Android Manifest ```br.com.instagram```
+* viewBinding ```true```
 
 Permissões do Android Manisfest:
  ```
@@ -59,3 +61,4 @@ Bibliotecas de terceiros:
  * [CircleImageView](https://github.com/hdodenhof/CircleImageView)
  * [Firebase](https://firebase.google.com/)
  * [Fragment KTX](https://developer.android.com/kotlin/ktx?gclid=Cj0KCQiAqvaNBhDLARIsAH1Pq522ar-HUgnXuNtnt3ZwTPcD0Rx-9OOMLDkJawhcvMJs5q29mUeDVncaAq9ZEALw_wcB&gclsrc=aw.ds)
+ * [View Binding](https://developer.android.com/topic/libraries/view-binding#kotlin)
