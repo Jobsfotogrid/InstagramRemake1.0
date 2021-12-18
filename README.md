@@ -1,10 +1,9 @@
 # InstagramRemake1.0
  
-:warning:Informaçõoes importantes
-* Linguagem de programação utilizada ```Java```
+Linguagem de programação utilizada ```Kotlin```
 * Ferramenta de desenvolvimento utilizada ```Android Studio```
 * Arquitetura do projeto ```MVP```
-* Android ```4.2 | Jelly Bean```
+* Android ```5.0 | Jelly Bean```
 * API ```17```
 
 Descrição do Módulo 14, 15, 16, 17 do curso Android Express ministrado pelo instrutor @Tiago Aguiar:
