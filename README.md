@@ -3,9 +3,10 @@
 * Linguagem de programação utilizada ```Kotlin```
 * Ferramenta de desenvolvimento utilizada ```Android Studio```
 * Arquitetura do projeto ```MVP```
-* Base de dados ```Firebase```
+* Base de dados ```Firebase | Cloud Firestore```
 * Android ```5.0 | Lollipop```
 * API ```21```
+* AndroidX ```true```
 * Android Manifest ```br.com.instagram```
 * viewBinding ```true```
 
