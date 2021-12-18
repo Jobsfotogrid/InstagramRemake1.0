@@ -1,17 +1,26 @@
 # InstagramRemake1.0
  
-Linguagem de programação utilizada ```Kotlin```
+* Linguagem de programação utilizada ```Kotlin```
 * Ferramenta de desenvolvimento utilizada ```Android Studio```
 * Arquitetura do projeto ```MVP```
+* Base de dados ```Firebase```
 * Android ```5.0 | Lollipop```
 * API ```21```
 
 Permissões do Android Manisfest:
  ```
- <uses-permission android:name="android.permission.INTERNET" />
- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
- <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
- <uses-permission android:name="android.permission.CAMERA" />
+ <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+    </queries>
  ```
  
  Permissões do Android Image Cropper no Android Manifest:
