@@ -63,3 +63,4 @@ Bibliotecas de terceiros:
  * [Firebase](https://firebase.google.com/)
  * [Fragment KTX](https://developer.android.com/kotlin/ktx?gclid=Cj0KCQiAqvaNBhDLARIsAH1Pq522ar-HUgnXuNtnt3ZwTPcD0Rx-9OOMLDkJawhcvMJs5q29mUeDVncaAq9ZEALw_wcB&gclsrc=aw.ds)
  * [View Binding](https://developer.android.com/topic/libraries/view-binding#kotlin)
+ * [Tiago Aguiar](https://tiagoaguiar.co/)
