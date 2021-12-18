@@ -5,7 +5,6 @@ Linguagem de programação utilizada ```Kotlin```
 * Arquitetura do projeto ```MVP```
 * Android ```5.0 | Jelly Bean```
 * API ```17```
-* Descrição do Módulo 14, 15, 16, 17 do curso Android Express ministrado pelo instrutor @Tiago Aguiar:
 
 Permissões do Android Manisfest:
  ```
