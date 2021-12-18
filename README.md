@@ -1,4 +1,4 @@
-# InstagramRemake1.0
+# Instagram Remake 1.0
  
 * Linguagem de programação utilizada ```Kotlin```
 * Ferramenta de desenvolvimento utilizada ```Android Studio```
@@ -54,8 +54,4 @@ Bibliotecas de terceiros:
 
  Links úteis:
  * [Firebase](https://firebase.google.com/)
- * [Butter Knife](https://github.com/JakeWharton/butterknife)
- * [Picasso](https://github.com/square/picasso)
- * [material-intro](https://github.com/heinrichreimer/material-intro)
- * [Android Image Cropper](https://github.com/ArthurHub/Android-Image-Cropper)
- * [CircleImageView](https://github.com/hdodenhof/CircleImageView)
+ * [Add Firebase to your Android project](https://firebase.google.com/docs/android/setup?authuser=0)
