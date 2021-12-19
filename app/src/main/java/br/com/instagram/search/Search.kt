@@ -2,7 +2,7 @@ package br.com.instagram.search
 
 import br.com.instagram.common.base.BasePresenter
 import br.com.instagram.common.base.BaseView
-import br.com.instagram.common.model.UserAuth
+import br.com.instagram.common.model.User
 
 interface Search {
 
@@ -12,7 +12,7 @@ interface Search {
 
     interface View : BaseView<Presenter> {
         fun showProgress(enabled: Boolean)
-        fun displayFullUsers(users: List<UserAuth>)
+        fun displayFullUsers(users: List<User>)
         fun displayEmptyUsers()
     }
 

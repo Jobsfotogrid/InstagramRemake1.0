@@ -1,6 +1,7 @@
 package br.com.instagram.search.presenter
 
 import br.com.instagram.common.base.RequestCallback
+import br.com.instagram.common.model.User
 import br.com.instagram.common.model.UserAuth
 import br.com.instagram.search.Search
 import br.com.instagram.search.data.SearchRepository
@@ -13,8 +14,8 @@ class SearchPresenter(
 
     override fun fetchUsers(name: String) {
         view?.showProgress(true)
-        repository.fetchUsers(name, object : RequestCallback<List<UserAuth>> {
-            override fun onSuccess(data: List<UserAuth>) {
+        repository.fetchUsers(name, object : RequestCallback<List<User>> {
+            override fun onSuccess(data: List<User>) {
                 if (data.isEmpty()) {
                     view?.displayEmptyUsers()
                 } else {
