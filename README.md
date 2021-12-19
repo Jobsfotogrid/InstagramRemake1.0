@@ -52,6 +52,10 @@ Bibliotecas de terceiros:
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.google.firebase:firebase-storage-ktx'
+    
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+    
 ```
 
  Links úteis:
@@ -61,5 +65,6 @@ Bibliotecas de terceiros:
  * [CircleImageView](https://github.com/hdodenhof/CircleImageView)
  * [Firebase](https://firebase.google.com/)
  * [Fragment KTX](https://developer.android.com/kotlin/ktx?gclid=Cj0KCQiAqvaNBhDLARIsAH1Pq522ar-HUgnXuNtnt3ZwTPcD0Rx-9OOMLDkJawhcvMJs5q29mUeDVncaAq9ZEALw_wcB&gclsrc=aw.ds)
+ * [Glide](https://github.com/bumptech/glide)
  * [View Binding](https://developer.android.com/topic/libraries/view-binding#kotlin)
  * [Tiago Aguiar](https://tiagoaguiar.co/)
