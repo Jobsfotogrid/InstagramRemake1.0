@@ -10,7 +10,12 @@ import java.util.*
 
 class AddFakeRemoteDataSource : AddDataSource {
 
-    override fun createPost(userUUID: String, uri: Uri, caption: String, callback: RequestCallback<Boolean>) {
+    override fun createPost(
+        userUUID: String,
+        uri: Uri,
+        caption: String,
+        callback: RequestCallback<Boolean>
+    ) {
         Handler(Looper.getMainLooper()).postDelayed({
 
             var posts = Database.posts[userUUID]
@@ -20,7 +25,9 @@ class AddFakeRemoteDataSource : AddDataSource {
                 Database.posts[userUUID] = posts
             }
 
-            val post = Post(UUID.randomUUID().toString(), uri, caption, System.currentTimeMillis(), Database.sessionAuth!!)
+            // TODO: remover essa classe
+            val post =
+                Post(UUID.randomUUID().toString(), null, caption, System.currentTimeMillis(), null)
 
             posts.add(post)
 
