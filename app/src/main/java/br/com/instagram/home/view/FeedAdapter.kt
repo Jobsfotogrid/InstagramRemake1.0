@@ -30,10 +30,8 @@ class FeedAdapter : RecyclerView.Adapter<FeedAdapter.FeedViewHolder>() {
     class FeedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(post: Post) {
 
-            Glide.with(itemView.context).load(post.photoUrl)
-                .into(itemView.findViewById(R.id.home_img_post))
-            Glide.with(itemView.context).load(post.publisher?.photoUrl)
-                .into(itemView.findViewById(R.id.home_img_user))
+            Glide.with(itemView.context).load(post.photoUrl).into(itemView.findViewById(R.id.home_img_post))
+            Glide.with(itemView.context).load(post.publisher?.photoUrl).into(itemView.findViewById(R.id.home_img_user))
 
             itemView.findViewById<TextView>(R.id.home_txt_caption).text = post.caption
             itemView.findViewById<TextView>(R.id.home_txt_username).text = post.publisher?.name

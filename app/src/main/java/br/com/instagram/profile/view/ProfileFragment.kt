@@ -9,10 +9,11 @@ import br.com.instagram.R
 import br.com.instagram.common.base.BaseFragment
 import br.com.instagram.common.base.DependencyInjector
 import br.com.instagram.common.model.Post
-import br.com.instagram.common.model.UserAuth
+import br.com.instagram.common.model.User
 import br.com.instagram.databinding.FragmentProfileBinding
 import br.com.instagram.profile.Profile
 import br.com.instagram.profile.presenter.ProfilePresenter
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding, Profile.Presenter>(
@@ -56,17 +57,20 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, Profile.Presenter>(
         binding?.profileProgress?.visibility = if (enabled) View.VISIBLE else View.GONE
     }
 
-    override fun displayUserProfile(user: Pair<UserAuth, Boolean?>) {
+    override fun displayUserProfile(user: Pair<User, Boolean?>) {
         val (userAuth, following) = user
 
         binding?.profileTxtPostsCount?.text = userAuth.postCount.toString()
-        binding?.profileTxtFollowingCount?.text = userAuth.followingCount.toString()
-        binding?.profileTxtFollowersCount?.text = userAuth.followersCount.toString()
+        binding?.profileTxtFollowingCount?.text = userAuth.following.toString()
+        binding?.profileTxtFollowersCount?.text = userAuth.followers.toString()
         binding?.profileTxtUsername?.text = userAuth.name
         binding?.profileTxtBio?.text = "TODO"
-        binding?.profileImgIcon?.setImageURI(userAuth.photoUri)
 
-        binding?.profileBtnEditProfile?.text = when(following) {
+        binding?.let {
+            Glide.with(requireContext()).load(userAuth.photoUrl).into(it.profileImgIcon)
+        }
+
+        binding?.profileBtnEditProfile?.text = when (following) {
             null -> getString(R.string.edit_profile)
             true -> getString(R.string.unfollow)
             false -> getString(R.string.follow)
@@ -98,7 +102,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, Profile.Presenter>(
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             R.id.menu_profile_grid -> {
                 binding?.profileRv?.layoutManager = GridLayoutManager(requireContext(), 3)
             }

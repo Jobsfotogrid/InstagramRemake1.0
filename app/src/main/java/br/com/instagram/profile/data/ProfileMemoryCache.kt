@@ -1,25 +1,26 @@
 package br.com.instagram.profile.data
 
 import br.com.instagram.common.base.Cache
+import br.com.instagram.common.model.User
 import br.com.instagram.common.model.UserAuth
 
-object ProfileMemoryCache : Cache<Pair<UserAuth, Boolean?>> {
+object ProfileMemoryCache : Cache<Pair<User, Boolean?>> {
 
-    private var userAuth: Pair<UserAuth, Boolean?>? = null
+    private var user: Pair<User, Boolean?>? = null
 
     override fun isCached(): Boolean {
-        return userAuth != null
+        return user != null
     }
 
-    override fun get(key: String): Pair<UserAuth, Boolean?>? {
-        if (userAuth?.first?.uuid == key) {
-            return userAuth
+    override fun get(key: String): Pair<User, Boolean?>? {
+        if (user?.first?.uuid == key) {
+            return user
         }
         return null
     }
 
-    override fun put(data: Pair<UserAuth, Boolean?>?) {
-        userAuth = data
+    override fun put(data: Pair<User, Boolean?>?) {
+        user = data
     }
 
 }

@@ -28,8 +28,7 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
     class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(photoUrl: String?) {
-            Glide.with(itemView.context).load(photoUrl)
-                .into(itemView.findViewById(R.id.item_profile_img_grid))
+            Glide.with(itemView.context).load(photoUrl).into(itemView.findViewById(R.id.item_profile_img_grid))
         }
     }
 

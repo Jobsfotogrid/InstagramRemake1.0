@@ -2,9 +2,9 @@ package br.com.instagram.home.data
 
 import br.com.instagram.common.base.Cache
 import br.com.instagram.common.base.RequestCallback
-import br.com.instagram.common.model.Database
 import br.com.instagram.common.model.Post
-import br.com.instagram.common.model.UserAuth
+import com.google.firebase.auth.FirebaseAuth
+import java.lang.RuntimeException
 
 class HomeLocalDataSource(private val feedCache: Cache<List<Post>>) : HomeDataSource {
 
@@ -18,8 +18,8 @@ class HomeLocalDataSource(private val feedCache: Cache<List<Post>>) : HomeDataSo
         callback.onComplete()
     }
 
-    override fun fetchSession(): UserAuth {
-        return Database.sessionAuth ?: throw RuntimeException("usuário não logado!!!")
+    override fun fetchSession(): String {
+        return FirebaseAuth.getInstance().uid ?: throw RuntimeException("usuário não logado!!!")
     }
 
     override fun putFeed(response: List<Post>?) {

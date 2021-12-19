@@ -11,7 +11,6 @@ import br.com.instagram.databinding.FragmentHomeBinding
 import br.com.instagram.home.Home
 import br.com.instagram.home.presenter.HomePresenter
 
-
 class HomeFragment : BaseFragment<FragmentHomeBinding, Home.Presenter>(
     R.layout.fragment_home,
     FragmentHomeBinding::bind
@@ -53,4 +52,5 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, Home.Presenter>(
         adapter.items = posts
         adapter.notifyDataSetChanged()
     }
+
 }
