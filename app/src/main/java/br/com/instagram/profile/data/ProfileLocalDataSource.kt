@@ -35,7 +35,7 @@ class ProfileLocalDataSource(
         return FirebaseAuth.getInstance().uid ?: throw RuntimeException("usuário não logado!!!")
     }
 
-    override fun putUser(response: Pair<User, Boolean?>) {
+    override fun putUser(response: Pair<User, Boolean?>?) {
         profileCache.put(response)
     }
 
