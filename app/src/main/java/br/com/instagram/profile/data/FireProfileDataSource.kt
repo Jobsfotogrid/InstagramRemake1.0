@@ -4,15 +4,14 @@ import br.com.instagram.common.base.RequestCallback
 import br.com.instagram.common.model.Post
 import br.com.instagram.common.model.User
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.Query
 
 class FireProfileDataSource : ProfileDataSource {
 
-    override fun fetchUserProfile(
-        userUUID: String,
-        callback: RequestCallback<Pair<User, Boolean?>>
-    ) {
+    override fun fetchUserProfile(userUUID: String, callback: RequestCallback<Pair<User, Boolean?>>) {
         FirebaseFirestore.getInstance()
             .collection("/users")
             .document(userUUID)
@@ -29,21 +28,20 @@ class FireProfileDataSource : ProfileDataSource {
                             callback.onSuccess(Pair(user, null))
                         } else {
                             FirebaseFirestore.getInstance()
-                                .collection("/followers") // [ na lista do sistema ]
-                                .document(FirebaseAuth.getInstance().uid!!) // [ meus seguidores ]
-                                .collection("followers") // [ meus seguidores ]
-                                .whereEqualTo(
-                                    "uuid",
-                                    userUUID
-                                ) // [ se o seguir do parametro esta na minha lista ]
+                                .collection("/followers")
+                                .document(userUUID)
                                 .get()
                                 .addOnSuccessListener { response ->
-                                    callback.onSuccess(Pair(user, !response.isEmpty))
+                                    if (!response.exists()) {
+                                        callback.onSuccess(Pair(user, false))
+                                    } else {
+                                        val list = response.get("followers") as List<String>
+                                        callback.onSuccess(Pair(user, list.contains(FirebaseAuth.getInstance().uid)))
+                                    }
+
                                 }
                                 .addOnFailureListener { exception ->
-                                    callback.onFailure(
-                                        exception.message ?: "Falha ao buscar seguidores"
-                                    )
+                                    callback.onFailure(exception.message ?: "Falha ao buscar seguidores")
                                 }
                                 .addOnCompleteListener {
                                     callback.onComplete()
@@ -83,12 +81,43 @@ class FireProfileDataSource : ProfileDataSource {
             }
     }
 
-    override fun followUser(
-        userUUID: String,
-        isFollow: Boolean,
-        callback: RequestCallback<Boolean>
-    ) {
-        // TODO: fazer nas proximas aulas
+    override fun followUser(userUUID: String, isFollow: Boolean, callback: RequestCallback<Boolean>) {
+        val uid = FirebaseAuth.getInstance().uid ?: throw RuntimeException("Usuário não logado!!!")
+        FirebaseFirestore.getInstance()
+            .collection("/followers")
+            .document(userUUID)
+            .update(
+                "followers", if (isFollow) FieldValue.arrayUnion(uid)
+                else FieldValue.arrayRemove(uid)
+            )
+            .addOnSuccessListener { res ->
+                callback.onSuccess(true)
+            }
+            .addOnFailureListener { exception ->
+                val err = exception as? FirebaseFirestoreException
+
+                if (err?.code == FirebaseFirestoreException.Code.NOT_FOUND) {
+                    FirebaseFirestore.getInstance()
+                        .collection("/followers")
+                        .document(userUUID)
+                        .set(
+                            hashMapOf(
+                                "followers" to listOf(uid)
+                            )
+                        )
+                        .addOnSuccessListener { res ->
+                            callback.onSuccess(true)
+                        }
+                        .addOnFailureListener { exception ->
+                            callback.onFailure(exception.message ?: "Falha ao criar seguidor")
+                        }
+                }
+
+                callback.onFailure(exception.message ?: "Falha ao atualizar seguidor")
+            }
+            .addOnCompleteListener {
+                callback.onComplete()
+            }
     }
 
 }
