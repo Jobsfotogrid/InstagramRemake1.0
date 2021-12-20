@@ -25,6 +25,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener,
     AddFragment.AddListener,
     SearchFragment.SearchListener,
+    ProfileFragment.FollowListener,
     LogoutListener {
 
     private lateinit var binding: ActivityMainBinding
@@ -70,8 +71,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         val coordinatorParams = binding.mainAppbar.layoutParams as CoordinatorLayout.LayoutParams
 
         if (enabled) {
-            params.scrollFlags =
-                AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL or AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS
+            params.scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL or AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS
             coordinatorParams.behavior = AppBarLayout.Behavior()
         } else {
             params.scrollFlags = 0
@@ -90,6 +90,14 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             replace(R.id.main_fragment, fragment, fragment.javaClass.simpleName + "detail")
             addToBackStack(null)
             commit()
+        }
+    }
+
+    override fun followUpdated() {
+        homeFragment.presenter.clear()
+
+        if (supportFragmentManager.findFragmentByTag(profileFragment.javaClass.simpleName) != null) {
+            profileFragment.presenter.clear()
         }
     }
 
