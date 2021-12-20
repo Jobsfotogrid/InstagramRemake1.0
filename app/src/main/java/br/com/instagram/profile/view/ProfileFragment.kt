@@ -1,5 +1,6 @@
 package br.com.instagram.profile.view
 
+import android.content.Context
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -11,6 +12,7 @@ import br.com.instagram.common.base.DependencyInjector
 import br.com.instagram.common.model.Post
 import br.com.instagram.common.model.User
 import br.com.instagram.databinding.FragmentProfileBinding
+import br.com.instagram.main.LogoutListener
 import br.com.instagram.profile.Profile
 import br.com.instagram.profile.presenter.ProfilePresenter
 import com.bumptech.glide.Glide
@@ -25,6 +27,15 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, Profile.Presenter>(
 
     private val adapter = PostAdapter()
     private var uuid: String? = null
+
+    private var logoutListener: LogoutListener? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is LogoutListener) {
+            logoutListener = context
+        }
+    }
 
     override fun setupPresenter() {
         val repository = DependencyInjector.profileRepository()
@@ -70,7 +81,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, Profile.Presenter>(
             Glide.with(requireContext()).load(userAuth.photoUrl).into(it.profileImgIcon)
         }
 
-        binding?.profileBtnEditProfile?.text = when (following) {
+        binding?.profileBtnEditProfile?.text = when(following) {
             null -> getString(R.string.edit_profile)
             true -> getString(R.string.unfollow)
             false -> getString(R.string.follow)
@@ -102,7 +113,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, Profile.Presenter>(
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        when(item.itemId) {
             R.id.menu_profile_grid -> {
                 binding?.profileRv?.layoutManager = GridLayoutManager(requireContext(), 3)
             }
@@ -111,6 +122,16 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, Profile.Presenter>(
             }
         }
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.menu_logout -> {
+                logoutListener?.logout()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     companion object {
