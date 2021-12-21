@@ -5,8 +5,18 @@
       <map>
         <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/drawable-v24/button_background_circle.xml" value="0.22552083333333334" />
         <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/drawable-v24/button_background_circle_disabled.xml" value="0.22552083333333334" />
+        <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/drawable-v24/button_background_circle_enabled.xml" value="0.22552083333333334" />
         <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/drawable-v24/edit_text_background.xml" value="0.22552083333333334" />
         <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/drawable-v24/ic_arrow_back.xml" value="0.22552083333333334" />
+        <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/drawable-v24/ic_insta_add.xml" value="0.22552083333333334" />
+        <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/drawable-v24/ic_insta_add_profile.xml" value="0.22552083333333334" />
+        <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/drawable-v24/ic_insta_camera.xml" value="0.22552083333333334" />
+        <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/drawable-v24/ic_insta_comment.xml" value="0.22552083333333334" />
+        <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/drawable-v24/ic_insta_heart.xml" value="0.22552083333333334" />
+        <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/drawable-v24/ic_insta_home.xml" value="0.22552083333333334" />
+        <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/drawable-v24/ic_insta_profile.xml" value="0.22552083333333334" />
+        <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/drawable-v24/ic_insta_search.xml" value="0.22552083333333334" />
+        <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/drawable-v24/ic_insta_send.xml" value="0.22552083333333334" />
         <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/drawable-v24/top_bottom_border.xml" value="0.11614583333333334" />
         <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/layout/activity_add.xml" value="0.209375" />
         <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/layout/activity_login.xml" value="0.25" />
@@ -21,7 +31,7 @@
         <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/layout/fragment_gallery.xml" value="0.209375" />
         <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/layout/fragment_home.xml" value="0.209375" />
         <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/layout/fragment_image_cropper.xml" value="0.209375" />
-        <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
+        <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/layout/fragment_register_email.xml" value="0.1" />
         <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/layout/fragment_register_name_password.xml" value="0.209375" />
         <entry key="..\:/Projetos/Kotlin/InstagramRemake1.0/app/src/main/res/layout/fragment_register_photo.xml" value="0.25" />
