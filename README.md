@@ -58,6 +58,18 @@ Bibliotecas de terceiros:
     
 ```
 
+Imagens do projeto
+
+![Screenshot_20211221-205409_Instagram](https://user-images.githubusercontent.com/59364674/147013463-2006961e-f227-469e-a804-ac8328bb4776.jpg)
+![Screenshot_20211221-205443_Instagram](https://user-images.githubusercontent.com/59364674/147013466-02bacbc6-30df-47b6-8943-190094380552.jpg)
+![Screenshot_20211221-205452_Instagram](https://user-images.githubusercontent.com/59364674/147013468-012c1b96-19c1-4ffb-93ec-7fba741aa2ab.jpg)
+![Screenshot_20211221-205510_Instagram](https://user-images.githubusercontent.com/59364674/147013478-69818c4e-d12a-4f75-b91e-ed519a38eda0.jpg)
+![Screenshot_20211221-205528_Instagram](https://user-images.githubusercontent.com/59364674/147013481-a8ac5275-adee-4f19-ac79-f0a35c1eeb57.jpg)
+![Screenshot_20211221-205534_Instagram](https://user-images.githubusercontent.com/59364674/147013492-97fae943-e562-486c-9dee-d478d9262dae.jpg)
+![Screenshot_20211221-205542_Instagram](https://user-images.githubusercontent.com/59364674/147013499-9b483e11-8458-4a02-8c35-284025c16ac0.jpg)
+![Screenshot_20211221-205608_Instagram](https://user-images.githubusercontent.com/59364674/147013504-9317cd75-be8d-44fc-8e26-40158621b48a.jpg)
+![Screenshot_20211221-205630_Instagram](https://user-images.githubusercontent.com/59364674/147013505-15d0b2d8-d925-4f72-b092-c4b75a2b64a4.jpg)
+
  Links úteis:
  * [Add Firebase to your Android project](https://firebase.google.com/docs/android/setup?authuser=0)
  * [Android Image Cropper](https://github.com/ArthurHub/Android-Image-Cropper)
