@@ -8,6 +8,7 @@
 * AndroidX ```true```
 * Android Manifest ```br.com.instagram```
 * viewBinding ```true```
+* Tema noturno ```Sim```
 
 Permissões do Android Manisfest:
  ```
